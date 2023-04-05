@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <limits.h>
+
+void findLargestTwo(int arr[], int n) {
+    int firstLargest = INT_MIN, secondLargest = INT_MIN;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > firstLargest) {
+            secondLargest = firstLargest;
+            firstLargest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] != firstLargest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    printf("FIRST LARGEST = %d\n", firstLargest);
+    printf("SECOND LARGEST = %d\n", secondLargest);
+}
+
+int main() {
+    int arr1[] = {2, 4, 5, 8, 7};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    printf("For Array 1:\n");
+    findLargestTwo(arr1, n1);
+
+    int arr2[] = {2, 1, 1, 2, 1, 2};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    printf("\nFor Array 2:\n");
+    findLargestTwo(arr2, n2);
+
+    return 0;
+}
